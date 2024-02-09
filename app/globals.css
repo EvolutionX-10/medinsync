@@ -35,3 +35,22 @@
 		--radius: 0.5rem;
 	}
 }
+
+/* In your global CSS file, e.g., styles.css */
+
+/* Hide scrollbar while allowing scrolling */
+body, html {
+	overflow-y: scroll;
+  }
+  
+  /* Customize scrollbar appearance */
+  /* For WebKit browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
+	width: 0px; /* Remove scrollbar width */
+  }
+  
+  /* For Firefox */
+  html {
+	scrollbar-width: none; /* Remove scrollbar width */
+  }
+  
