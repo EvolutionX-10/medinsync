@@ -12,7 +12,7 @@ export default function Page() {
             Med<span className="text-[#7BEE8D]">In</span>Sync
           </p>
         </div>
-        <Link href="/Login">
+        <Link href="/login">
           <button className="rounded-3xl ml-0 mr-20 bg-[#0075FF] px-16 py-3 text-white">
             Login
           </button>
