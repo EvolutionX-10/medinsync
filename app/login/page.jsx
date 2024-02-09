@@ -23,14 +23,16 @@ export default function Login() {
 		//         aadhaar: data.get("aadhaar"),
 		//     },
 		// });
-		const user = fetch("/api/get-user", {
-			method: "POST",
-			body: JSON.stringify({
-				name: data.get("name"),
-				aadhaar: data.get("aadhaar"),
-			}),
-		});
-		if (user) {
+		const user = await (
+			await fetch("/api/get-user", {
+				method: "POST",
+				body: JSON.stringify({
+					name: data.get("name"),
+					aadhaar: data.get("aadhaar"),
+				}),
+			})
+		).json();
+		if (user.status === 200) {
 			// redirect("/dashboard");
 			console.log("User already exists");
 			// get the form data from formRef and update the store useLoginDetails
