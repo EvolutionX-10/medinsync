@@ -44,8 +44,7 @@ export default function Page() {
 				</div>
 			</div>
 
-
-      <div className="flex flex-col items-center lg:flex-row lg:mt-24 lg:justify-between lg:mr-20 mt-24 mb-36">
+			<div className="flex flex-col items-center lg:flex-row lg:mt-24 lg:justify-between lg:mr-20 mt-24 mb-36">
 				<div className="flex flex-col items-center lg:text-left text-center mt-10 ">
 					<p className="text-4xl font-medium">How does MedInSync helps Hospitals and Patients ?</p>
 					<p className="text-2xl lg:w-[50vw] mt-10 lg:text-left text-center w-4/5">
@@ -55,9 +54,14 @@ export default function Page() {
 						Aliquam in hendrerit urna. Pellentesque sit.
 					</p>
 				</div>
-        <Image src="/graphic1.svg" alt="" height={250} width={250} className="lg:h-[40vh] lg:w-[40vw] w-[80vw] mt-10 " />
+				<Image
+					src="/graphic1.svg"
+					alt=""
+					height={250}
+					width={250}
+					className="lg:h-[40vh] lg:w-[40vw] w-[80vw] mt-10 "
+				/>
 			</div>
-			
 		</div>
 	);
 }
