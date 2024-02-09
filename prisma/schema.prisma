@@ -8,8 +8,32 @@ datasource db {
 }
 
 model User {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  created        DateTime @default(now()) @map("created_at")
+  aadhaar        String   @unique
+  username       String
+  dob            DateTime
+  weight         Float
+  phoneNumber    String
+  relativeNumber String
+}
+
+// model MedicalRecord {
+//   id           String        @id @default(auto()) @map("_id") @db.ObjectId
+//   createdAt    DateTime      @default(now()) @map("created_at")
+//   bloodPressure String
+//   heartRate    Int
+//   weight       Float
+//   user         User?         @relation(fields: [userId], references: [id])
+//   userId       String?       @map("user_id") @db.ObjectId
+// }
+
+model Hospital {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   created  DateTime @default(now()) @map("created_at")
-  username String
-  aadhaar  String   @unique
+  name     String   @unique
+  location String
+  email    String
+  phone    String
+  gstNo    String   @unique
 }
