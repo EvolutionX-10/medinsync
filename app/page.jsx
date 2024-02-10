@@ -5,9 +5,8 @@ import Navbar from "@/components/Navbar";
 export default function Page() {
 	return (
 		<div className="ml-6 lg:ml-20 mr-6 lg:mr-20">
-			{/* Navigation */}
-			
-			 <Navbar />
+			<Navbar />
+
 			{/* Text1 */}
 			
 

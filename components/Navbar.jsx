@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { Link } from "react-scroll";
+// import { Link } from "react-scroll";
+import Link from "next/link";
 
 const Navb = ({ isSticky, toggleMenu, isMenuOpen }) => {
 	return (
