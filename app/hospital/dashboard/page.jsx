@@ -8,7 +8,7 @@ const DashboardPage = () => {
   alert(name);
   return (
     <div>
-      {/* <Navbar username={username} /> */}
+      <Navbar username={username} />
     </div>
   );
 };
