@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* * {
+  outline: 1px solid red;
+} */
+
 /* Define root variables */
 :root {
   --background: 0 0% 100%;
