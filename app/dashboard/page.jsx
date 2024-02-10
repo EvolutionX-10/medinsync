@@ -10,7 +10,7 @@ function Page() {
 	const date = currentDate.getDate();
 
 	return (
-		<div>	
+		<div className="">	
 		
 			{/* Navbar */}
 			<Navbar />
