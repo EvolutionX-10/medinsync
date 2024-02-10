@@ -15,11 +15,11 @@ function Page() {
 	const date = currentDate.getDate();
 
 	const [userData, setUserData] = useState({});
-	const [hospitalData, setHospitalData] = useState({});
+	const [lastHospital, setLastHospital] = useState({});
 
 	useEffect(() => {
 		const getData = async () => {
-			const userData = JSON.parse(
+			const usdData = JSON.parse(
 				(
 					await (
 						await fetch("/api/get-user", {
@@ -32,33 +32,35 @@ function Page() {
 					).json()
 				).body
 			);
-			console.log(userData);
-			setUserData(userData);
+			setUserData(usdData);
+			const getHos = async (i) => {
+				const records = usdData?.records?.reverse();
+				if (!records.length) return;
+				const hospitalData = JSON.parse(
+					(
+						await (
+							await fetch("/api/get-hospital", {
+								method: "POST",
+								body: JSON.stringify({
+									gstNo: records[i].hospitalId,
+								}),
+							})
+						).json()
+					).body
+				);
+				console.log(hospitalData);
+				if (i == 0) {
+					setLastHospital(hospitalData);
+				}
+				records[i].hospitalName = hospitalData.name;
+				setUserData({ ...userData, records });
+			};
+			usdData.records?.forEach((record, index) => {
+				getHos(index);
+			});
 		};
 		username.length && getData();
-	}, [username]);
-
-	useEffect(() => {
-		const getData = async () => {
-			const records = userData?.records?.reverse();
-			if (!records.length) return;
-			const hospitalData = JSON.parse(
-				(
-					await (
-						await fetch("/api/get-hospital", {
-							method: "POST",
-							body: JSON.stringify({
-								gstNo: records[0].hospitalId,
-							}),
-						})
-					).json()
-				).body
-			);
-			console.log(hospitalData);
-			setHospitalData(hospitalData);
-		};
-		userData.records && getData();
-	}, [userData]);
+	}, [username, lastHospital.name]);
 
 	return (
 		<>
@@ -71,7 +73,7 @@ function Page() {
 					</div>
 					<div className="flex flex-col items-center gap-8 ml-10 lg:ml-0 mt-8 lg:mt-0">
 						<div className="w-72 h-16 rounded-full bg-[#66CDCC] flex justify-center items-center text-4xl font-semibold">
-							<p>{hospitalData.name}</p>
+							<p>{lastHospital.name}</p>
 						</div>
 						<div className="w-72 bg-white h-40 rounded-3xl flex flex-col lg:flex-row items-center justify-around">
 							<Avatar className="h-20 w-20">
@@ -79,7 +81,7 @@ function Page() {
 								<AvatarFallback>CN</AvatarFallback>
 							</Avatar>
 							<div className="flex flex-col items-start lg:ml-4">
-								<p className="text-xl font-medium">{hospitalData.name}</p>
+								<p className="text-xl font-medium">{lastHospital.name}</p>
 								<p className="text-sm">Last Visited</p>
 							</div>
 						</div>
@@ -95,7 +97,11 @@ function Page() {
 						<p className="font-semibold px-1">Your Past Records</p>
 						<hr className="ml-4  w-7/12 h-3 border-black" />
 					</div>
-					<Record />
+					<div className="mt-8">
+						{userData.records?.map((record, index) => {
+							return <Record key={index} hospitalName={record.hospitalName} prescription={record.prescription} />;
+						})}
+					</div>
 				</div>
 			</div>
 		</>
