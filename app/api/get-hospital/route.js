@@ -5,7 +5,6 @@ export async function POST(req) {
 	const prisma = new PrismaClient();
 	const user = await prisma.hospital.findUnique({
 		where: {
-			name: data.name,
 			gstNo: data.gstNo,
 		},
 	});
