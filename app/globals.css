@@ -2,45 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-	:root {
-		--background: 0 0% 100%;
-		--foreground: 222.2 84% 4.9%;
-
-		--card: 0 0% 100%;
-		--card-foreground: 222.2 84% 4.9%;
-
-		--popover: 0 0% 100%;
-		--popover-foreground: 222.2 84% 4.9%;
-
-		--primary: 222.2 47.4% 11.2%;
-		--primary-foreground: 210 40% 98%;
-
-		--secondary: 210 40% 96.1%;
-		--secondary-foreground: 222.2 47.4% 11.2%;
-
-		--muted: 210 40% 96.1%;
-		--muted-foreground: 215.4 16.3% 46.9%;
-
-		--accent: 210 40% 96.1%;
-		--accent-foreground: 222.2 47.4% 11.2%;
-
-		--destructive: 0 84.2% 60.2%;
-		--destructive-foreground: 210 40% 98%;
-
-		--border: 214.3 31.8% 91.4%;
-		--input: 214.3 31.8% 91.4%;
-		--ring: 222.2 84% 4.9%;
-
-		--radius: 0.5rem;
-	}
+/* Define color variables */
+:root {
+	--background: 0 0% 100%;
+	--foreground: 222.2 84% 4.9%;
+	--card: 0 0% 100%;
+	--card-foreground: 222.2 84% 4.9%;
+	--popover: 0 0% 100%;
+	--popover-foreground: 222.2 84% 4.9%;
+	--primary: 222.2 47.4% 11.2%;
+	--primary-foreground: 210 40% 98%;
+	--secondary: 210 40% 96.1%;
+	--secondary-foreground: 222.2 47.4% 11.2%;
+	--muted: 210 40% 96.1%;
+	--muted-foreground: 215.4 16.3% 46.9%;
+	--accent: 210 40% 96.1%;
+	--accent-foreground: 222.2 47.4% 11.2%;
+	--destructive: 0 84.2% 60.2%;
+	--destructive-foreground: 210 40% 98%;
+	--border: 214.3 31.8% 91.4%;
+	--input: 214.3 31.8% 91.4%;
+	--ring: 222.2 84% 4.9%;
+	--radius: 0.5rem;
 }
 
-/* In your global CSS file, e.g., styles.css */
-
 /* Hide scrollbar while allowing scrolling */
-body,
-html {
+body, html {
 	overflow-y: scroll;
 }
 
@@ -78,10 +65,10 @@ body {
 	left: 0;
 	right: 0;
 	will-change: transform;
+}
 
-	.ghost {
-		width: 100vw;
-	}
+.ghost {
+	width: 100vw;
 }
 
 .thumbnails-container {
@@ -91,22 +78,23 @@ body {
 	display: flex;
 	align-items: center;
 	background-color: black;
-
-	.thumbnails {
-		position: relative;
-		display: flex;
-
-		& > *:not(:last-child) {
-			margin-right: 45px;
-		}
-
-		.thumbnail {
-			height: 40vh;
-			width: 700px;
-			background-color: royalblue;
-		}
-	}
 }
+
+.thumbnails {
+	position: relative;
+	display: flex;
+}
+
+.thumbnail:not(:last-child) {
+	margin-right: 45px;
+}
+
+.thumbnail {
+	height: 40vh;
+	width: 700px;
+	background-color: royalblue;
+}
+
 .navbar {
 	position: fixed;
 	top: 0;
@@ -117,7 +105,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	z-index: 1000; /* Ensure the navbar is on top of other content */
+	z-index: 1000;
 }
 
 .logo img {
