@@ -1,10 +1,12 @@
 "use client";
 import { useRef } from "react";
-import { useLoginDetails } from "@/store";
+import { useHospitalDetails } from "@/store";
+import { useRouter } from "next/navigation";
 
 export default function RegisterHospital() {
 	const formRef = useRef(null);
-	const { setLoginDetails } = useLoginDetails();
+	const router = useRouter();
+	const { setHospitalDetails } = useHospitalDetails();
 
 	async function updateHospital(data) {
 		console.log(data.get("name"));
@@ -18,11 +20,13 @@ export default function RegisterHospital() {
 		console.log(user.status);
 		if (user.status === 200) {
 			// redirect("/dashboard");
+			router.push("/doctor/search");
 			console.log("User already exists");
 			// get the form data from formRef and update the store useLoginDetails
-			setLoginDetails(data.get("name"), data.get("gstNo"));
+			setHospitalDetails(data.get("name"), data.get("gstNo"));
 		} else {
 			// redirect("/register");
+			router.push("/hospital/login");
 			console.log("User does not exist");
 		}
 	}

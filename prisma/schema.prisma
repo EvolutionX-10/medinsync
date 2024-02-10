@@ -8,32 +8,38 @@ datasource db {
 }
 
 model User {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  created        DateTime @default(now()) @map("created_at")
-  aadhaar        String   @unique
+  aadhaar        String          @id @map("_id")
+  created        DateTime        @default(now()) @map("created_at")
+  updated        DateTime        @default(now()) @map("updated_at")
   username       String
   dob            DateTime
-  weight         Float
   phoneNumber    String
   relativeNumber String
+  records        MedicalRecord[]
 }
 
-// model MedicalRecord {
-//   id           String        @id @default(auto()) @map("_id") @db.ObjectId
-//   createdAt    DateTime      @default(now()) @map("created_at")
-//   bloodPressure String
-//   heartRate    Int
-//   weight       Float
-//   user         User?         @relation(fields: [userId], references: [id])
-//   userId       String?       @map("user_id") @db.ObjectId
-// }
+model MedicalRecord {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime @default(now()) @map("created_at")
+  bloodPressure Int
+  heartRate     Int
+  weight        Float
+  temperature   Float
+  symptoms      String
+  diagnosis     String
+  prescription  String
+  hospital      Hospital @relation(fields: [hospitalId], references: [gstNo])
+  User          User?    @relation(fields: [userId], references: [aadhaar])
+  hospitalId    String
+  userId        String
+}
 
 model Hospital {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  created  DateTime @default(now()) @map("created_at")
-  name     String   @unique
-  location String
-  email    String
-  phone    String
-  gstNo    String   @unique
+  gstNo         String          @id @map("_id")
+  created       DateTime        @default(now()) @map("created_at")
+  name          String
+  location      String
+  email         String
+  phone         String
+  MedicalRecord MedicalRecord[]
 }

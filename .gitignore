@@ -39,7 +39,16 @@ next-env.d.ts
 # Yarn files
 .yarn/install-state.gz
 .yarn/build-state.yml
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> de271f0209cbc513ccf72fd88417cbdb9288e8e9
 
 # IDE files
 .idea
 .vscode
+<<<<<<< HEAD
+=======
+>>>>>>> 070a60dc1561389e1904f27753c29a04e417b552
+>>>>>>> de271f0209cbc513ccf72fd88417cbdb9288e8e9

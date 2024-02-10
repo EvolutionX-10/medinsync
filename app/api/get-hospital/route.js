@@ -5,7 +5,6 @@ export async function POST(req) {
 	const prisma = new PrismaClient();
 	const user = await prisma.hospital.findUnique({
 		where: {
-			name: data.name,
 			gstNo: data.gstNo,
 		},
 	});
@@ -17,7 +16,7 @@ export async function POST(req) {
 	} else {
 		return Response.json({
 			status: 404,
-			body: JSON.stringify({ message: "user not found" }),
+			body: JSON.stringify({ message: "hospital not found" }),
 		});
 	}
 }

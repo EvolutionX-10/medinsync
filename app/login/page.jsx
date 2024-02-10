@@ -3,26 +3,14 @@
 
 import { useRef } from "react";
 import { useLoginDetails } from "@/store";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
 	const formRef = useRef(null);
+	const router = useRouter();
 	const { setLoginDetails } = useLoginDetails();
 
 	async function addUser(data) {
-		// "use server";
-		// const prisma = new PrismaClient();
-		// const user = await prisma.user.create({
-		// 	data: {
-		// 		username: data.get("name"),
-		// 		aadhaar: data.get("aadhaar"),
-		// 	},
-		// });
-		// now check if the user aaadhar is already present in the database
-		// const user = await prisma.user.findUnique({
-		//     where: {
-		//         aadhaar: data.get("aadhaar"),
-		//     },
-		// });
 		const user = await (
 			await fetch("/api/get-user", {
 				method: "POST",
@@ -35,22 +23,24 @@ export default function Login() {
 		if (user.status === 200) {
 			// redirect("/dashboard");
 			console.log("User already exists");
+			router.push("/records");
 			// get the form data from formRef and update the store useLoginDetails
 			setLoginDetails(data.get("name"), data.get("aadhaar"));
 		} else {
-			// redirect("/register");
+			// redirect("/reception/register");
+			router.push("/reception/register");
 			console.log("User does not exist");
 		}
 	}
 
 	return (
 		<>
-			<section className="bg-gray-50 dark:bg-gray-900">
+			<section className="bg-gray-50 dark:bg-gray-900 flex">
 				<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 					<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
 						<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
 							<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-								Sign in to your account
+								Log In to your account
 							</h1>
 							<form className="space-y-4 md:space-y-6" action={addUser} ref={formRef}>
 								<div>
@@ -86,11 +76,14 @@ export default function Login() {
 									type="submit"
 									className="w-full bg-blue-400 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 								>
-									Sign in
+									Log In
 								</button>
 							</form>
 						</div>
 					</div>
+				</div>
+				<div className="h-full bg-red-600">
+					
 				</div>
 			</section>
 		</>
