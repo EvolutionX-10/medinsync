@@ -23,12 +23,12 @@ export default function Login() {
 		if (user.status === 200) {
 			// redirect("/dashboard");
 			console.log("User already exists");
-			router.push('/dashboard');
+			router.push("/records");
 			// get the form data from formRef and update the store useLoginDetails
 			setLoginDetails(data.get("name"), data.get("aadhaar"));
 		} else {
 			// redirect("/reception/register");
-			router.push('/reception/register');
+			router.push("/reception/register");
 			console.log("User does not exist");
 		}
 	}
