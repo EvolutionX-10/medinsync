@@ -8,40 +8,40 @@ datasource db {
 }
 
 model User {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  created        DateTime @default(now()) @map("created_at")
-  aadhaar        String   @unique
+  id             String          @id @default(auto()) @map("_id") @db.ObjectId
+  created        DateTime        @default(now()) @map("created_at")
+  updated        DateTime        @default(now()) @map("updated_at")
+  aadhaar        String          @unique
   username       String
   dob            DateTime
-  weight         Float
   phoneNumber    String
   relativeNumber String
-
-  checkupDate   DateTime? @default(now()) @map("checkup_date")
-  bloodPressure String?
-  heartRate     String?
-  temperature   String?
-  cholesterol   String?
-  glucoseLevel  String?
-  bmi           String?
+  records        MedicalRecord[]
 }
 
-// model MedicalRecord {
-//   id           String        @id @default(auto()) @map("_id") @db.ObjectId
-//   createdAt    DateTime      @default(now()) @map("created_at")
-//   bloodPressure String
-//   heartRate    Int
-//   weight       Float
-//   user         User?         @relation(fields: [userId], references: [id])
-//   userId       String?       @map("user_id") @db.ObjectId
-// }
+model MedicalRecord {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime  @default(now()) @map("created_at")
+  bloodPressure Int
+  heartRate     Int
+  weight        Float
+  temperature   Float
+  symptoms      String
+  diagnosis     String
+  prescription  String
+  hospital      Hospital? @relation(fields: [hospitalId], references: [id])
+  User          User?     @relation(fields: [userId], references: [id])
+  hospitalId    String?   @db.ObjectId
+  userId        String?   @db.ObjectId
+}
 
 model Hospital {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  created  DateTime @default(now()) @map("created_at")
-  name     String   @unique
-  location String
-  email    String
-  phone    String
-  gstNo    String   @unique
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  created       DateTime        @default(now()) @map("created_at")
+  name          String          @unique
+  location      String
+  email         String
+  phone         String
+  gstNo         String          @unique
+  MedicalRecord MedicalRecord[]
 }

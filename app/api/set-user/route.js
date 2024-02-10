@@ -7,7 +7,6 @@ export async function POST(req) {
 		data: {
 			username: data.username,
 			dob: new Date(data.dob),
-			weight: +data.weight,
 			phoneNumber: data.phoneNumber,
 			relativeNumber: data.relativeNumber,
 			aadhaar: data.aadhaar,

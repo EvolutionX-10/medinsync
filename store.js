@@ -13,3 +13,16 @@ export const useLoginDetails = create(
 		}
 	)
 );
+
+export const useHospitalDetails = create(
+	persist(
+		(set) => ({
+			name: "",
+			gstNo: "",
+			setHospitalDetails: (name, gstNo) => set({ name, gstNo }),
+		}),
+		{
+			name: "hospital-details",
+		}
+	)
+);

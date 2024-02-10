@@ -1,10 +1,10 @@
 "use client";
 import { useRef } from "react";
-import { useLoginDetails } from "@/store";
+import { useHospitalDetails } from "@/store";
 
 export default function RegisterHospital() {
 	const formRef = useRef(null);
-	const { setLoginDetails } = useLoginDetails();
+	const { setHospitalDetails } = useHospitalDetails();
 
 	async function updateHospital(data) {
 		console.log(data.get("name"));
@@ -20,7 +20,7 @@ export default function RegisterHospital() {
 			// redirect("/dashboard");
 			console.log("User already exists");
 			// get the form data from formRef and update the store useLoginDetails
-			setLoginDetails(data.get("name"), data.get("gstNo"));
+			setHospitalDetails(data.get("name"), data.get("gstNo"));
 		} else {
 			// redirect("/register");
 			console.log("User does not exist");
