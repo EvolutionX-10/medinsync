@@ -16,6 +16,14 @@ model User {
   weight         Float
   phoneNumber    String
   relativeNumber String
+
+  checkupDate   DateTime? @default(now()) @map("checkup_date")
+  bloodPressure String?
+  heartRate     String?
+  temperature   String?
+  cholesterol   String?
+  glucoseLevel  String?
+  bmi           String?
 }
 
 // model MedicalRecord {
