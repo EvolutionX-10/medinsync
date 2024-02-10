@@ -5,7 +5,12 @@ export async function POST(req) {
 	const data = await req.json();
 	console.log(data);
 	const prisma = new PrismaClient();
-	const user = await prisma.user.update({
+	const hospital = await prisma.hospital.findUnique({
+		where: {
+			gstNo: data.gstNo,
+		},
+	});
+	const updatedUser = await prisma.user.update({
 		where: {
 			aadhaar: data.aadhaar,
 		},
@@ -19,14 +24,29 @@ export async function POST(req) {
 					symptoms: data.symptoms,
 					diagnosis: data.diagnosis,
 					prescription: data.prescription,
+					hospital: {
+						connectOrCreate: {
+							create: {
+								name: hospital.name,
+								gstNo: hospital.gstNo,
+								email: hospital.email,
+								phone: hospital.phone,
+								location: hospital.location,
+							},
+							where: {
+								gstNo: hospital.gstNo,
+							},
+						},
+					},
 				},
 			},
 		},
 	});
-	if (user) {
+
+	if (updatedUser) {
 		return Response.json({
 			status: 200,
-			body: JSON.stringify(user),
+			body: JSON.stringify(updatedUser),
 		});
 	} else {
 		return Response.json({

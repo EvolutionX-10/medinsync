@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { useLoginDetails } from "@/store";
+import { useHospitalDetails, useLoginDetails } from "@/store";
 
 export default function SearchUser() {
 	const formRef = useRef(null);
@@ -88,6 +88,7 @@ export default function SearchUser() {
 }
 
 function UpdateFields(props) {
+	const { gstNo } = useHospitalDetails();
 	async function updateUser(data) {
 		const response = await fetch("/api/update-user", {
 			method: "POST",
@@ -100,6 +101,7 @@ function UpdateFields(props) {
 				diagnosis: data.get("diagnosis"),
 				prescription: data.get("prescription"),
 				...props,
+				gstNo,
 			}),
 		});
 		if (response.status === 200) {
