@@ -1,10 +1,12 @@
 "use client";
 import { useRef } from "react";
 import { useLoginDetails } from "@/store";
+import { useRouter } from 'next/navigation';
 
 export default function Register() {
 	const formReff = useRef(null);
 	const { setLoginDetails } = useLoginDetails();
+	const router = useRouter();
 
 	async function updateUser(data) {
 		console.log(data.get("name"));
@@ -27,6 +29,7 @@ export default function Register() {
 			setLoginDetails(data.get("name"), data.get("aadhaar"));
 		} else {
 			// redirect("/register");
+			router.push('/reception/register');
 			console.log("User does not exist");
 		}
 	}

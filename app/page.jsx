@@ -16,6 +16,7 @@ export default function Page() {
 					<button className="rounded-3xl ml-0  bg-[#0075FF] px-16 py-3 text-white">Login</button>
 				</Link>
 			</div>
+			
 
 			{/* Text1 */}
 			<div className="flex flex-col lg:flex-col items-center lg:items-start gap-4">

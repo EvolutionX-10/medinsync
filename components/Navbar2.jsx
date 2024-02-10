@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import { Link } from "react-scroll";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
