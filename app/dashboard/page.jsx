@@ -58,13 +58,13 @@ function Page() {
 				</div>
 				<div className="w-[80vw] border-red-400 mt-20 lg:ml-48 ml-10 ">
 					<div className="flex">
-						<p className="font-semibold ">Your Records</p>
+						<p className="font-semibold px-1">Your Past Records</p>
 						<hr className="mt-3 lg:ml-16 ml-4 mb-8 w-7/12 lg:w-10/12 h-3 border-black" />
 					</div>
 					{sections.map((section, index) => (
 						<div key={index} className="accordion-container">
 							<button
-								className={`accordion-button ${activeIndex === index ? "active" : ""}`}
+								className={`text-left px-4 accordion-button ${activeIndex === index ? "active" : ""}`}
 								onClick={() => togglePanel(index)}
 							>
 								{section.title}

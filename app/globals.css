@@ -2,129 +2,128 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
-  outline: 1px solid red;
-} */
-
-/* Define root variables */
+/* Define color variables */
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
-  --radius: 0.5rem;
+	--background: 0 0% 100%;
+	--foreground: 222.2 84% 4.9%;
+	--card: 0 0% 100%;
+	--card-foreground: 222.2 84% 4.9%;
+	--popover: 0 0% 100%;
+	--popover-foreground: 222.2 84% 4.9%;
+	--primary: 222.2 47.4% 11.2%;
+	--primary-foreground: 210 40% 98%;
+	--secondary: 210 40% 96.1%;
+	--secondary-foreground: 222.2 47.4% 11.2%;
+	--muted: 210 40% 96.1%;
+	--muted-foreground: 215.4 16.3% 46.9%;
+	--accent: 210 40% 96.1%;
+	--accent-foreground: 222.2 47.4% 11.2%;
+	--destructive: 0 84.2% 60.2%;
+	--destructive-foreground: 210 40% 98%;
+	--border: 214.3 31.8% 91.4%;
+	--input: 214.3 31.8% 91.4%;
+	--ring: 222.2 84% 4.9%;
+	--radius: 0.5rem;
 }
 
 /* Hide scrollbar while allowing scrolling */
-body,
-html {
-  overflow-y: scroll;
+body, html {
+	overflow-y: scroll;
 }
 
 /* Customize scrollbar appearance */
 /* For WebKit browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
-  width: 0px; /* Remove scrollbar width */
+	width: 0px; /* Remove scrollbar width */
 }
 
 /* For Firefox */
-html,body {
-  scrollbar-width: none; /* Remove scrollbar width */
-  background-color: #fafafa;
+html {
+	scrollbar-width: none; /* Remove scrollbar width */
 }
 
 *,
 *:before,
 *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-/* Scroll container */
+body {
+	background-color: white;
+	overscroll-behavior: none;
+	-ms-overflow-style: none;
+	font-size: 16px;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
 .scroll-container {
-  position: fixed;
-  left: 0;
-  right: 0;
-  will-change: transform;
+	position: fixed;
+	left: 0;
+	right: 0;
+	will-change: transform;
 }
 
-/* Ghost element */
 .ghost {
-  width: 100vw;
+	width: 100vw;
 }
 
-/* Thumbnails container */
 .thumbnails-container {
-  position: relative;
-  height: 100vh;
-  width: max-content;
-  display: flex;
-  align-items: center;
+	position: relative;
+	height: 100vh;
+	width: max-content;
+	display: flex;
+	align-items: center;
+	background-color: black;
 }
 
-/* Thumbnails */
 .thumbnails {
-  position: relative;
-  display: flex;
+	position: relative;
+	display: flex;
 }
 
-/* Thumbnail */
+.thumbnail:not(:last-child) {
+	margin-right: 45px;
+}
+
 .thumbnail {
-  height: 40vh;
-  width: 700px;
-  background-color: royalblue;
+	height: 40vh;
+	width: 700px;
+	background-color: royalblue;
 }
 
-/* Navbar */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000; /* Ensure the navbar is on top of other content */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #333;
+	padding: 10px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 1000;
 }
 
-/* Logo */
 .logo img {
-  width: 50px;
-  height: 50px;
+	width: 50px;
+	height: 50px;
 }
 
-/* Navbar navigation */
 .navbar-nav {
-  list-style: none;
-  display: flex;
-  align-items: center;
+	list-style: none;
+	display: flex;
+	align-items: center;
 }
 
-/* Navbar item */
 .nav-item {
-  margin-right: 20px;
+	margin-right: 20px;
 }
 
-/* Navbar link */
 .nav-link {
-  color: #fff;
-  text-decoration: none;
+	color: #fff;
+	text-decoration: none;
 }
