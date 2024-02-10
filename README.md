@@ -11,10 +11,15 @@
 
 ## Table of Contents
 
+- [About] [#about]
 - [Beta Testing for MedInSync](#beta-testing-for-medinsync)
 - [Developing on MedInSync](#developing-on-medinsync)
 - [Contributing](#contributing)
 - [Project Stats](#project-stats)
+
+## About
+
+In response to the pressing challenges faced by healthcare providers in efficiently managing patient information and ensuring seamless coordination of medical services, we introduce our solution: the creation of a user-friendly Medical Application Website. This innovative platform is meticulously designed to bridge the communication gap between patients and healthcare facilities, offering secure access to medical records, streamlined coordination of services, and robust patient verification mechanisms. With a strong emphasis on data security, integrity, and patient privacy, our website aims to revolutionize healthcare delivery by providing a reliable, accessible, and user-centric platform for both patients and healthcare providers.
 
 ## Beta Testing for MedInSync
 
