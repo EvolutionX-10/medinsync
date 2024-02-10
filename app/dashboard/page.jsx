@@ -10,7 +10,6 @@ function Page() {
 	const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	const dayOfWeekString = days[Day];
 	const date = currentDate.getDate();
-	const [name , setName] = useState('Jayesh')
 	return (
 		<>
 			<Navbar />
