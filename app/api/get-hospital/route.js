@@ -17,7 +17,7 @@ export async function POST(req) {
 	} else {
 		return Response.json({
 			status: 404,
-			body: JSON.stringify({ message: "user not found" }),
+			body: JSON.stringify({ message: "hospital not found" }),
 		});
 	}
 }

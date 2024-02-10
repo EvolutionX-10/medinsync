@@ -1,14 +1,20 @@
 "use client";
 import { useRef, useState } from "react";
-import { useLoginDetails } from "@/store";
+import { useHospitalDetails, useLoginDetails } from "@/store";
 
 export default function SearchUser() {
 	const formRef = useRef(null);
 	const { setLoginDetails } = useLoginDetails();
 	const [userExists, setUserExists] = useState(false);
+	const [userDetails, setUserDetails] = useState({});
 
 	async function searchUser(data) {
-		console.log(data.get("name"));
+		setUserDetails(() => {
+			return {
+				name: data.get("name"),
+				aadhaar: data.get("aadhaar"),
+			};
+		});
 		const response = await fetch("/api/get-user", {
 			method: "POST",
 			body: JSON.stringify({
@@ -52,7 +58,7 @@ export default function SearchUser() {
 									</div>
 									<div>
 										<label htmlFor="aadhaar" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-											Aadhar Number
+											Aadhaar Number
 										</label>
 										<input
 											type="text"
@@ -73,7 +79,7 @@ export default function SearchUser() {
 							</div>
 						</div>
 					) : (
-						<UpdateFields />
+						<UpdateFields {...userDetails} />
 					)}
 				</div>
 			</section>
@@ -81,14 +87,36 @@ export default function SearchUser() {
 	);
 }
 
-function UpdateFields() {
+function UpdateFields(props) {
+	const { gstNo } = useHospitalDetails();
+	async function updateUser(data) {
+		const response = await fetch("/api/update-user", {
+			method: "POST",
+			body: JSON.stringify({
+				bloodPressure: data.get("bloodPressure"),
+				heartRate: data.get("heartRate"),
+				weight: data.get("weight"),
+				temperature: data.get("temperature"),
+				symptoms: data.get("symptoms"),
+				diagnosis: data.get("diagnosis"),
+				prescription: data.get("prescription"),
+				...props,
+				gstNo,
+			}),
+		});
+		if (response.status === 200) {
+			console.log("User parameters updated successfully");
+		} else {
+			console.error("Failed to update user parameters");
+		}
+	}
 	return (
 		<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
 			<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
 				<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
 					Update User Parameters
 				</h1>
-				<form className="space-y-4 md:space-y-6" action={updateUser} >
+				<form className="space-y-4 md:space-y-6" action={updateUser}>
 					<div>
 						<label htmlFor="bloodPressure" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
 							Blood Pressure
@@ -129,41 +157,54 @@ function UpdateFields() {
 						/>
 					</div>
 					<div>
-						<label htmlFor="cholesterol" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-							Cholesterol
+						<label htmlFor="weight" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+							Weight
 						</label>
 						<input
 							type="number"
-							name="cholesterol"
-							id="cholesterol"
+							name="weight"
+							id="weight"
 							className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-							placeholder="Cholesterol"
+							placeholder="Weight"
 							required
 						/>
 					</div>
 					<div>
-						<label htmlFor="glucoseLevel" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-							Glucose Level
+						<label htmlFor="symptoms" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+							Symptoms
 						</label>
 						<input
-							type="number"
-							name="glucoseLevel"
-							id="glucoseLevel"
+							type="text"
+							name="symptoms"
+							id="symptoms"
 							className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-							placeholder="Glucose Level"
+							placeholder="Symptoms"
 							required
 						/>
 					</div>
 					<div>
-						<label htmlFor="bmi" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-							BMI
+						<label htmlFor="diagnosis" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+							Diagnosis
 						</label>
 						<input
-							type="number"
-							name="bmi"
-							id="bmi"
+							type="text"
+							name="diagnosis"
+							id="diagnosis"
 							className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-							placeholder="BMI"
+							placeholder="Diagnosis"
+							required
+						/>
+					</div>
+					<div>
+						<label htmlFor="prescription" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+							Prescription
+						</label>
+						<input
+							type="text"
+							name="prescription"
+							id="prescription"
+							className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+							placeholder="Prescription"
 							required
 						/>
 					</div>
@@ -177,24 +218,4 @@ function UpdateFields() {
 			</div>
 		</div>
 	);
-}
-
-async function updateUser(data) {
-	// const formData = new FormData(event.target);
-	const response = await fetch("/api/update-user", {
-		method: "POST",
-		body: JSON.stringify({
-			bloodPressure: data.get("bloodPressure"),
-			heartRate: data.get("heartRate"),
-			temperature: data.get("temperature"),
-			cholesterol: data.get("cholesterol"),
-			glucoseLevel: data.get("glucoseLevel"),
-			bmi: data.get("bmi"),
-		}),
-	});
-	if (response.status === 200) {
-		console.log("User parameters updated successfully");
-	} else {
-		console.error("Failed to update user parameters");
-	}
 }
