@@ -5,10 +5,10 @@ import { useHospitalDetails } from '@/store';
 
 const DashboardPage = () => {
   const { name } = useHospitalDetails();
-  alert(name);
+  // alert(name);
   return (
     <div>
-      <Navbar username={username} />
+      <Navbar name={name} />
     </div>
   );
 };

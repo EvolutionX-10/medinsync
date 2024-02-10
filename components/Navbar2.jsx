@@ -1,10 +1,10 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useLoginDetails } from '@/store';
 
-const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems,name }) => {
-  const [username , setUserName] = useState()
-
+const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems, username }) => {
   return (
     <header className={`w-full ${isSticky ? "sticky top-0 left-0 right-0 bg-white shadow-md rounded-b-lg z-10" : ""}`}>
       <nav className="py-4 lg:px-14 px-4">
@@ -71,10 +71,11 @@ const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems,name }) => {
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const { username } = useLoginDetails();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 0) {
+      if (window.scrollY > 0) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
@@ -117,7 +118,7 @@ const Navbar = () => {
         toggleMenu={toggleMenu}
         isMenuOpen={isMenuOpen}
         navItems={navItems}
-        name={name}
+        username={username}
       />
     </div>
   );
