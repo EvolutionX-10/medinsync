@@ -8,7 +8,7 @@ const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems }) => {
   return (
     <header className={`w-full bg-white ${isSticky ? "sticky top-0 left-0 right-0 border-b bg-white shadow-md" : "md-bg-transparent"} fixed top-0 left-0 right-0 z-10 overflow-x-hidden`}>
       <nav className="py-4 lg:px-14 px-4">
-        <div className="flex justify-between items-center text-base">
+        <div className="flex justify-around items-center text-base">
           <a href="#" className="text-2xl font-semibold flex items-center space-x-3">
             <img src="/logo.svg" alt="" className="w-10 initial-block items-center" />
           </a>
@@ -95,7 +95,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-cover bg-center h-screen overflow-x-hidden">
+    <div className="bg-cover bg-center  overflow-x-hidden">
       <Navb
         isSticky={isSticky}
         toggleMenu={toggleMenu}
