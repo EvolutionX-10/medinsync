@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-// import Footer from "@/components/Footer";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 export default function Page() {
 	return (
@@ -75,11 +75,14 @@ export default function Page() {
 				</Link>
 			</div>
 
-			<div className="flex items-center justify-center mt-20">
+			<div className="flex items-center justify-center mt-20 mb-20">
 				<a href="#" className="text-2xl font-semibold flex items-center space-x-3">
 					<img src="/logo.svg" alt="" className="w-36 initial-block items-center" />
 				</a>
 			</div>
+
+			{/* Footer */}
+			<Footer />
 		</div>
 	);
 }
