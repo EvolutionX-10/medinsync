@@ -65,6 +65,7 @@ To contribute to this repository, feel free to fork the repository and make your
 
 [`node.js`]: https://nodejs.org/en/
 [`mongodb`]: https://www.mongodb.com/
+[`next.js`]: https://nextjs.org/
 [`git`]: https://git-scm.com/
 [node.js]: https://nodejs.org/en/
 [pr]: https://github.com/EvolutionX-10/medinsync/pulls
