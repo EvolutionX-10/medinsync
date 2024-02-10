@@ -5,8 +5,10 @@ import Landing1 from "./landing1";
 import Landing2 from "./landing2";
 import Landing3 from "./landing3";
 import Landing4 from "./landing4";
+import Landing5 from "./landing5";
 
 function page() {
+   
    return (
       <>
          <Navbar />
@@ -14,7 +16,8 @@ function page() {
          <Landing2 />
          <Landing3 />
          <Landing4 />
-         {/* <Footer /> */}
+         <Landing5 />
+         <Footer />  
       </>
    )
 }
