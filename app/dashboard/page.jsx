@@ -10,36 +10,68 @@ function Page() {
 	const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	const dayOfWeekString = days[Day];
 	const date = currentDate.getDate();
+
+	const [activeIndex, setActiveIndex] = useState(null);
+
+	const togglePanel = (index) => {
+		setActiveIndex(activeIndex === index ? null : index);
+	};
+
+	const sections = [
+		{ title: "Section 1", content: "Lorem ipsum..." },
+		{ title: "Section 2", content: "Lorem ipsum..." },
+		{ title: "Section 3", content: "Lorem ipsum..." },
+	];
+
 	return (
 		<>
 			<Navbar />
-			<div className="bg-[#edf6f5] py-20">
+			<div className="bg-[#edf6f5]  py-20">
 				{/* Navbar */}
 
-				<div className="flex flex-col lg:flex-row items-center justify-between lg:items-start  ml-4 lg:ml-20 mt-40 ">
-					<div>
-						<p className="text-6xl font-bold">{dayOfWeekString}</p>
-						<p className="text-7xl font-semibold">{date}</p>
+				<div className="flex flex-col lg:flex-row items-center justify-between lg:items-start  ml-4 lg:ml-20 mt-20 ">
+					<div className="">
+						<p className="w-full text-6xl font-bold">{dayOfWeekString}</p>
+						<p className="w-full lg:text-left text-center text-7xl font-semibold">{date}</p>
 					</div>
-					<div className="w-[10vw] -ml-20 flex flex-col gap-8">
-						<div className="w-[30rem] h-16 rounded-full bg-[#66CDCC] flex justify-center items-center text-4xl font-semibold">
-							<p>Your Doctor</p>
+					<div className="w-[10vw] -ml-20 flex flex-col lg:items-start items-center gap-8">
+						<div className="lg:w-[30rem] ml-20 lg:ml-0 mt-8 lg:mt-0 w-72 h-16 rounded-full bg-[#66CDCC] flex justify-center items-center text-4xl font-semibold">
+							<p className="text-center">Your Doctor</p>
 						</div>
-						<div className="w-[30rem] bg-white h-40 rounded-3xl flex items-center justify-around ">
-						<Avatar className="h-20 w-20">
+						<div className="lg:w-[30rem] w-72 ml-20 lg:ml-0 bg-white h-40 rounded-3xl flex flex-col lg:flex-row items-center justify-around ">
+							<Avatar className="h-20 w-20">
 								<AvatarImage src="https://github.com/shadcn.png" />
 								<AvatarFallback>CN</AvatarFallback>
-								</Avatar>
-								<div className="flex flex-col items-start">
-						<p className="-ml-20 text-3xl font-medium">Doctor's Name</p>
-						<p className="text-sm text-left">Last Visited </p>		
-						</div></div>
+							</Avatar>
+							<div className="flex flex-col items-start ">
+								<p className="lg:-ml-20 lg:text-3xl text-xl font-medium ">Doctor's Name</p>
+								<p className="text-sm lg:text-left text-center w-full">Last Visited </p>
+							</div>
+						</div>
 					</div>
-					<div>
-						<div className="w-[30rem] h-64 rounded-3xl border-[#797885] border-2 mr-20">
+					<div className="flex justify-center ml-20 lg:ml-0 mt-20 lg:mt-0">
+						<div className="lg:w-[30rem] w-[90vw] h-64 rounded-3xl border-[#797885] border-2 mr-20">
 							<p className="block font-medium mx-auto text-center mt-3 text-3xl">Prescription</p>
 						</div>
 					</div>
+				</div>
+				<div className="w-[80vw] border-red-400  mt-20 ml-48">
+					<div>
+						<p>Your Records</p>
+					</div>
+					{sections.map((section, index) => (
+						<div key={index} className="flex justify-center" >
+							<button
+								className={`bg-[#fff] hover:bg-[#edf6f5] transition-all	 h-16 rounded-full w-full border-2 text-left px-10 border-black my-3 accordion ${activeIndex === index ? "active" : ""}`}
+								onClick={() => togglePanel(index)}
+							>
+								{section.title}
+							</button>
+							<div className="panel" style={{ display: activeIndex === index ? "block" : "none" }}>
+								<p>{section.content}</p>
+							</div>
+						</div>
+					))}
 				</div>
 			</div>
 		</>
