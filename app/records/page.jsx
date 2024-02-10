@@ -1,31 +1,67 @@
 "use client";
-
+import { useLoginDetails } from "@/store";
 import Navbar from "@/components/Navbar2";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useState } from "react";
-// import "./dashboard.css";
+import "./dashboard.css";
+import { Record } from "./Record";
+import { useEffect, useState } from "react";
 
 function Page() {
-    const currentDate = new Date();
-    const Day = currentDate.getDay();
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const dayOfWeekString = days[Day];
-    const date = currentDate.getDate();
+	const { username, aadhaar } = useLoginDetails();
+	const currentDate = new Date();
+	const Day = currentDate.getDay();
+	const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	const dayOfWeekString = days[Day];
+	const date = currentDate.getDate();
 
-    const [activeIndex, setActiveIndex] = useState(null);
+	const [userData, setUserData] = useState({});
+	const [hospitalData, setHospitalData] = useState({});
 
-    const togglePanel = (index) => {
-        setActiveIndex(activeIndex === index ? null : index);
-    };
+	useEffect(() => {
+		const getData = async () => {
+			const userData = JSON.parse(
+				(
+					await (
+						await fetch("/api/get-user", {
+							method: "POST",
+							body: JSON.stringify({
+								name: username,
+								aadhaar,
+							}),
+						})
+					).json()
+				).body
+			);
+			console.log(userData);
+			setUserData(userData);
+		};
+		username.length && getData();
+	}, [username]);
 
-    const sections = [
-        { title: "Section 1", content: "Lorem ipsum..." },
-        { title: "Section 2", content: "Lorem ipsum..." },
-        { title: "Section 3", content: "Lorem ipsum..." },
-    ];
+	useEffect(() => {
+		const getData = async () => {
+			const records = userData?.records?.reverse();
+			if (!records.length) return;
+			const hospitalData = JSON.parse(
+				(
+					await (
+						await fetch("/api/get-hospital", {
+							method: "POST",
+							body: JSON.stringify({
+								gstNo: records[0].hospitalId,
+							}),
+						})
+					).json()
+				).body
+			);
+			console.log(hospitalData);
+			setHospitalData(hospitalData);
+		};
+		userData.records && getData();
+	}, [userData]);
 
-    return (
-        <>
+	return (
+		<>
             <Navbar />
             <div className="bg-[#edf6f5] py-20">
                 <div className="flex flex-col lg:flex-row items-center justify-between lg:items-start ml-4 lg:ml-20 mt-20">
@@ -75,6 +111,6 @@ function Page() {
                 </div>
             </div>
         </>
-    );
+	);
 }
 export default Page;
