@@ -1,0 +1,31 @@
+    /* Add these styles to your CSS */
+.accordion-container {
+    margin-bottom: 15px;
+}
+
+.accordion-button {
+    background-color: #fff;
+    border: 2px solid black;
+    border-radius :999px;;
+    padding: 10px 20px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.accordion-button:hover {
+    background-color: #edf6f5;
+}
+
+.accordion-button.active {
+    background-color: #edf6f5;
+}
+
+.accordion-panel {
+    display: none;
+    padding: 10px;
+}
+
+.accordion-panel.active {
+    display: block;
+}

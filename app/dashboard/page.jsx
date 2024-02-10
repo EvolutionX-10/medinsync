@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar2";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
+import "./dashboard.css";
 
 function Page() {
 	const currentDate = new Date();
@@ -38,7 +39,7 @@ function Page() {
 						<div className="lg:w-[30rem] ml-20 lg:ml-0 mt-8 lg:mt-0 w-72 h-16 rounded-full bg-[#66CDCC] flex justify-center items-center text-4xl font-semibold">
 							<p className="text-center">Your Doctor</p>
 						</div>
-						<div className="lg:w-[30rem] w-72 ml-20 lg:ml-0 bg-white h-40 rounded-3xl flex flex-col lg:flex-row items-center justify-around ">
+						<div className="lg:w-[30rem] w-72 ml-20 lg:ml-0 bg-white h-40 rounded-3xl	 flex flex-col lg:flex-row items-center justify-around ">
 							<Avatar className="h-20 w-20">
 								<AvatarImage src="https://github.com/shadcn.png" />
 								<AvatarFallback>CN</AvatarFallback>
@@ -55,19 +56,20 @@ function Page() {
 						</div>
 					</div>
 				</div>
-				<div className="w-[80vw] border-red-400  mt-20 ml-48">
-					<div>
-						<p>Your Records</p>
+				<div className="w-[80vw] border-red-400 mt-20 lg:ml-48 ml-10 ">
+					<div className="flex">
+						<p className="font-semibold ">Your Records</p>
+						<hr className="mt-3 lg:ml-16 ml-4 mb-8 w-7/12 lg:w-10/12 h-3 border-black" />
 					</div>
 					{sections.map((section, index) => (
-						<div key={index} className="flex justify-center" >
+						<div key={index} className="accordion-container">
 							<button
-								className={`bg-[#fff] hover:bg-[#edf6f5] transition-all	 h-16 rounded-full w-full border-2 text-left px-10 border-black my-3 accordion ${activeIndex === index ? "active" : ""}`}
+								className={`accordion-button ${activeIndex === index ? "active" : ""}`}
 								onClick={() => togglePanel(index)}
 							>
 								{section.title}
 							</button>
-							<div className="panel" style={{ display: activeIndex === index ? "block" : "none" }}>
+							<div className={`accordion-panel ${activeIndex === index ? "active" : ""}`}>
 								<p>{section.content}</p>
 							</div>
 						</div>
