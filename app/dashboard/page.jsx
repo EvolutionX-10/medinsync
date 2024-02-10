@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar2";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
-import "./dashboard.css";
+// import "./dashboard.css";
 
 function Page() {
 	const currentDate = new Date();
