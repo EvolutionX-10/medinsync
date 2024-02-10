@@ -12,7 +12,6 @@ export default function Lottie() {
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.5 }}
          >
-            Syncing your health
          </motion.div>
          <Player src={about} autoplay loop />
       </div>
