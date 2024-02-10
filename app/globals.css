@@ -39,74 +39,73 @@
 /* In your global CSS file, e.g., styles.css */
 
 /* Hide scrollbar while allowing scrolling */
-body, html {
+body,
+html {
 	overflow-y: scroll;
-  }
-  
-  /* Customize scrollbar appearance */
-  /* For WebKit browsers (Chrome, Safari) */
-  ::-webkit-scrollbar {
+}
+
+/* Customize scrollbar appearance */
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
 	width: 0px; /* Remove scrollbar width */
-<<<<<<< HEAD
-  }
-  
-  /* For Firefox */
-  html {
+}
+
+/* For Firefox */
+html {
 	scrollbar-width: none; /* Remove scrollbar width */
-  }
-  
+}
 
 *,
 *:before,
 *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-  background-color: black;
-  overscroll-behavior: none;
-  -ms-overflow-style: none;
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	background-color: black;
+	overscroll-behavior: none;
+	-ms-overflow-style: none;
+	font-size: 16px;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .scroll-container {
-  position: fixed;
-  left: 0;
-  right: 0;
-  will-change: transform;
+	position: fixed;
+	left: 0;
+	right: 0;
+	will-change: transform;
 
-  .ghost {
-    width: 100vw;
-  }
+	.ghost {
+		width: 100vw;
+	}
 }
 
 .thumbnails-container {
-  position: relative;
-  height: 100vh;
-  width: max-content;
-  display: flex;
-  align-items: center;
-  background-color: black;
+	position: relative;
+	height: 100vh;
+	width: max-content;
+	display: flex;
+	align-items: center;
+	background-color: black;
 
-  .thumbnails {
-    position: relative;
-    display: flex;
+	.thumbnails {
+		position: relative;
+		display: flex;
 
-    & > *:not(:last-child) {
-      margin-right: 45px;
-    }
+		& > *:not(:last-child) {
+			margin-right: 45px;
+		}
 
-    .thumbnail {
-      height: 40vh;
-      width: 700px;
-      background-color: royalblue;
-    }
-  }
+		.thumbnail {
+			height: 40vh;
+			width: 700px;
+			background-color: royalblue;
+		}
+	}
 }
 .navbar {
 	position: fixed;
@@ -119,33 +118,24 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	z-index: 1000; /* Ensure the navbar is on top of other content */
-  }
-  
-  .logo img {
+}
+
+.logo img {
 	width: 50px;
 	height: 50px;
-  }
-  
-  .navbar-nav {
+}
+
+.navbar-nav {
 	list-style: none;
 	display: flex;
 	align-items: center;
-  }
-  
-  .nav-item {
+}
+
+.nav-item {
 	margin-right: 20px;
-  }
-  
-  .nav-link {
+}
+
+.nav-link {
 	color: #fff;
 	text-decoration: none;
-  }
-=======
-  }
-  
-  /* For Firefox */
-  html {
-	scrollbar-width: none; /* Remove scrollbar width */
-  }
-  
->>>>>>> 070a60dc1561389e1904f27753c29a04e417b552
+}
