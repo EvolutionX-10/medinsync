@@ -20,7 +20,7 @@ export default function Page() {
 			<div className="flex items-center justify-center mt-10">
 				<Link href="/about">
 					<button className="rounded-full ml-0 bg-[#0075FF] px-16 py-3 text-white h-[5rem] w-[20rem] text-4xl">
-						bout
+						About
 					</button>
 				</Link>
 			</div>
