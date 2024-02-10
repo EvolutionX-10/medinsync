@@ -93,6 +93,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lottiefiles/react-lottie-player@npm:^3.5.3":
+  version: 3.5.3
+  resolution: "@lottiefiles/react-lottie-player@npm:3.5.3"
+  dependencies:
+    lottie-web: "npm:^5.10.2"
+  peerDependencies:
+    react: 16 - 18
+  checksum: 10c0/db32ff9e0594b6244eaf39a54190dad81c79339b4437abda1f122c354bd2aaf3235e565af1e036aa32bba53bda9401ceac942a5ac59295a091146c8bc8836f85
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:14.1.0":
   version: 14.1.0
   resolution: "@next/env@npm:14.1.0"
@@ -1341,6 +1352,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lottie-web@npm:^5.10.2":
+  version: 5.12.2
+  resolution: "lottie-web@npm:5.12.2"
+  checksum: 10c0/0aeaf631b10a76afd025df70c2a1486543530708e07a316946c08e55891dac483ffbaf2bf3648ae0b9c54c733118a0a086fd150aa76f7848606214c67ad72c30
+  languageName: node
+  linkType: hard
+
 "lru-cache@npm:^10.0.1, lru-cache@npm:^9.1.1 || ^10.0.0":
   version: 10.2.0
   resolution: "lru-cache@npm:10.2.0"
@@ -1380,6 +1398,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "medinsync@workspace:."
   dependencies:
+    "@lottiefiles/react-lottie-player": "npm:^3.5.3"
     "@prisma/client": "npm:^5.9.1"
     "@radix-ui/react-accordion": "npm:^1.1.2"
     "@radix-ui/react-avatar": "npm:^1.0.4"

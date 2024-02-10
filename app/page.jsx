@@ -1,3 +1,5 @@
+'use client';
+import Lottie from "@/components/ui/lottie";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
@@ -6,6 +8,9 @@ import { figtree } from "@/app/fonts";
 export default function Page() {
 	return (
 		<div className="ml-6 lg:ml-20 mr-6 lg:mr-20">
+			<Lottie />
+			{/* Navigation */}
+			
 			<Navbar />
 
 			{/* Text1 */}

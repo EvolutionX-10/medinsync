@@ -6,6 +6,7 @@ import Landing1 from "./Landing1";
 import Landing2 from "./landing2";
 import Landing3 from "./landing3";
 import Landing4 from "./landing4";
+import Landing5 from "./landing5";
 
 const SmoothScroll = () => {
   const scrollRef = useRef(null);
