@@ -1,15 +1,14 @@
-'use client'
 import React, { useState } from "react";
 import { Link } from "react-scroll";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems }) => {
-  const [userAvatar, setUserAvatar] = useState("/default-avatar.jpg"); // Default avatar image
+  const [name , setName] = useState('Jayesh')
 
   return (
-    <header className={`w-full bg-white ${isSticky ? "sticky top-0 left-0 right-0 border-b bg-white shadow-md" : "md-bg-transparent"} fixed top-0 left-0 right-0 z-10 overflow-x-hidden`}>
+    <header className={`w-full ${isSticky ? "sticky top-0 left-0 right-0 bg-white shadow-md rounded-b-lg z-10" : ""}`}>
       <nav className="py-4 lg:px-14 px-4">
-        <div className="flex justify-between items-center text-base">
+        <div className="flex justify-around items-center text-base">
           <a href="#" className="text-2xl font-semibold flex items-center space-x-3">
             <img src="/logo.svg" alt="" className="w-10 initial-block items-center" />
           </a>
@@ -28,7 +27,6 @@ const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems }) => {
             ))}
           </ul>
           <div className="flex items-center">
-            
             <button onClick={toggleMenu} className="hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,6 +46,7 @@ const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems }) => {
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
+            <p className="ml-4">{name}</p>
           </div>
         </div>
         <div className={`space-y-4 px-4 mt-16 py-7 bg-primary ${isMenuOpen ? "block fixed top-0 right-0 left-0" : "hidden"}`}>
@@ -73,6 +72,22 @@ const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 0) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
@@ -96,7 +111,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-cover bg-center h-screen overflow-x-hidden">
+    <div className="bg-cover bg-center  overflow-x-hidden">
       <Navb
         isSticky={isSticky}
         toggleMenu={toggleMenu}
