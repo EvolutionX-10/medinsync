@@ -7,7 +7,11 @@ export async function POST(req) {
 		where: {
 			aadhaar: data.aadhaar,
 		},
+		include: {
+			records: true,
+		},
 	});
+	console.log(user);
 	if (user) {
 		return Response.json({
 			status: 200,
