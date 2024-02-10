@@ -25,6 +25,7 @@ export default function RegisterHospital() {
 		if (user.status === 200) {
 			// redirect("/dashboard");
 			console.log("User registered successfully");
+			router.push("/hospital/login");
 			// get the form data from formRef and update the store useLoginDetails
 			setHospitalDetails(data.get("name"), data.get("gstNo"));
 		} else {

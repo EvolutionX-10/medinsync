@@ -1,9 +1,11 @@
 "use client";
 import { useLoginDetails } from "@/store";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-function Show() {
+export default function Show() {
     const { username, aadhaar } = useLoginDetails();
+    const router = useRouter();
     const currentDate = new Date();
     const date = currentDate.getDate();
 
@@ -36,7 +38,7 @@ function Show() {
             const records = userData?.records?.reverse();
             if (!records || !records.length) return;
 
-            const hospitalId = records[0].hospitalId; // Assuming hospitalId is available in the first record
+            const hospitalId = records[0].hospitalId; 
             const hospitalData = JSON.parse(
                 (
                     await (
@@ -57,8 +59,8 @@ function Show() {
 
     return (
         <>
-            <div className="bg-[#edf6f5] py-20">
-                <div className="flex flex-col lg:flex-row items-center justify-between lg:items-center ml-4 lg:ml-20 mt-20">
+            <div className="bg-[#edf6f5] py-20 h-screen">
+                <div className="flex flex-col lg:flex-row items-center justify-center lg:items-center ml-4 mt-20">
                     <div className="flex flex-col items-center gap-8 ml-10 lg:ml-0 mt-8 lg:mt-0 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-8">
                         <table className="table-auto mt-4 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4">
                             <thead>
@@ -85,4 +87,3 @@ function Show() {
     );
 }
 
-export default Show;

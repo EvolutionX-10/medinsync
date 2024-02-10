@@ -20,6 +20,7 @@ export default function RegisterHospital() {
 		console.log(user.status);
 		if (user.status === 200) {
 			// redirect("/dashboard");
+			router.push("/doctor/search");
 			console.log("User already exists");
 			// get the form data from formRef and update the store useLoginDetails
 			setHospitalDetails(data.get("name"), data.get("gstNo"));
