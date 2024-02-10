@@ -3,9 +3,11 @@
 
 import { useRef } from "react";
 import { useLoginDetails } from "@/store";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
 	const formRef = useRef(null);
+	const router = useRouter();
 	const { setLoginDetails } = useLoginDetails();
 
 	async function addUser(data) {
@@ -24,7 +26,8 @@ export default function Login() {
 			// get the form data from formRef and update the store useLoginDetails
 			setLoginDetails(data.get("name"), data.get("aadhaar"));
 		} else {
-			// redirect("/register");
+			// redirect("/reception/register");
+			router.push('/reception/register');
 			console.log("User does not exist");
 		}
 	}

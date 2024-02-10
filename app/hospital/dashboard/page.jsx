@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react';
+"use client";
+import React from 'react';
 import Navbar from '@/components/Navbar2';
+import { useHospitalDetails } from '@/store';
 
-const Dashboard = () => {
-  const [hospitalName, setHospitalName] = useState('Default Hospital');
-
-  useEffect(() => {
-    const storedName = localStorage.getItem('name');
-    if (storedName) {
-      setHospitalName(storedName);
-    }
-  }, []);
-
+const DashboardPage = () => {
+  const { name } = useHospitalDetails();
+  alert(name);
   return (
     <div>
-      <Navbar hospitalName={hospitalName} />
+      <Navbar username={username} />
     </div>
   );
-}
+};
 
-export default Dashboard;
+export default DashboardPage;

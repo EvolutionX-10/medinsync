@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems }) => {
-  const [name , setName] = useState('Jayesh')
+const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems,name }) => {
+  const [username , setUserName] = useState()
 
   return (
     <header className={`w-full ${isSticky ? "sticky top-0 left-0 right-0 bg-white shadow-md rounded-b-lg z-10" : ""}`}>
@@ -46,7 +46,7 @@ const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems }) => {
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
-            <p className="ml-4">{name}</p>
+            <p className="ml-4">{username}</p>
           </div>
         </div>
         <div className={`space-y-4 px-4 mt-16 py-7 bg-primary ${isMenuOpen ? "block fixed top-0 right-0 left-0" : "hidden"}`}>
@@ -117,6 +117,7 @@ const Navbar = () => {
         toggleMenu={toggleMenu}
         isMenuOpen={isMenuOpen}
         navItems={navItems}
+        name={name}
       />
     </div>
   );
