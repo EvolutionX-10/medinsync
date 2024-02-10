@@ -11,7 +11,7 @@
 
 ## Table of Contents
 
-- [About] [#about]
+- [About](#about)
 - [Beta Testing for MedInSync](#beta-testing-for-medinsync)
 - [Developing on MedInSync](#developing-on-medinsync)
 - [Contributing](#contributing)
