@@ -1,9 +1,12 @@
 "use client";
 import { useRef } from "react";
 import { useHospitalDetails } from "@/store";
+import { useRouter } from "next/navigation";
+
 
 export default function RegisterHospital() {
 	const formRef = useRef(null);
+	const router = useRouter();
 	const { setHospitalDetails } = useHospitalDetails();
 
 	async function updateHospital(data) {
@@ -26,6 +29,7 @@ export default function RegisterHospital() {
 			setHospitalDetails(data.get("name"), data.get("gstNo"));
 		} else {
 			// redirect("/register");
+			// router.push("/hospital/login");
 			console.log("User does not exist");
 		}
 	}

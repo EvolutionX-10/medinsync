@@ -3,9 +3,11 @@
 
 import { useRef } from "react";
 import { useLoginDetails } from "@/store";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
 	const formRef = useRef(null);
+	const router = useRouter();
 	const { setLoginDetails } = useLoginDetails();
 
 	async function addUser(data) {
@@ -21,10 +23,12 @@ export default function Login() {
 		if (user.status === 200) {
 			// redirect("/dashboard");
 			console.log("User already exists");
+			router.push('/dashboard');
 			// get the form data from formRef and update the store useLoginDetails
 			setLoginDetails(data.get("name"), data.get("aadhaar"));
 		} else {
-			// redirect("/register");
+			// redirect("/reception/register");
+			router.push('/reception/register');
 			console.log("User does not exist");
 		}
 	}
@@ -36,7 +40,7 @@ export default function Login() {
 					<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
 						<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
 							<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-								Sign in to your account
+								Log In to your account
 							</h1>
 							<form className="space-y-4 md:space-y-6" action={addUser} ref={formRef}>
 								<div>
@@ -72,7 +76,7 @@ export default function Login() {
 									type="submit"
 									className="w-full bg-blue-400 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 								>
-									Sign in
+									Log In
 								</button>
 							</form>
 						</div>
