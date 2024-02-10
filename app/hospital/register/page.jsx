@@ -29,7 +29,7 @@ export default function RegisterHospital() {
 			setHospitalDetails(data.get("name"), data.get("gstNo"));
 		} else {
 			// redirect("/register");
-			router.push("/hospital/login");
+			// router.push("/hospital/login");
 			console.log("User does not exist");
 		}
 	}
