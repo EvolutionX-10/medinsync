@@ -47,6 +47,7 @@ body, html {
   /* For WebKit browsers (Chrome, Safari) */
   ::-webkit-scrollbar {
 	width: 0px; /* Remove scrollbar width */
+<<<<<<< HEAD
   }
   
   /* For Firefox */
@@ -139,3 +140,12 @@ body {
 	color: #fff;
 	text-decoration: none;
   }
+=======
+  }
+  
+  /* For Firefox */
+  html {
+	scrollbar-width: none; /* Remove scrollbar width */
+  }
+  
+>>>>>>> 070a60dc1561389e1904f27753c29a04e417b552
