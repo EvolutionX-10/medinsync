@@ -16,7 +16,7 @@ const Navb = ({ isSticky, toggleMenu, isMenuOpen }) => {
 						<img src="/logo.svg" alt="" className="ml-4 w-10 initial-block items-center" />
 					</Link>
 					<ul className="md:flex   items-center font-semibold">
-						<Link href="/login">
+						<Link href="/hospital/register">
 							<button className="rounded-3xl ml-0 bg-[#0075FF] px-16 md:w-40 py-2 text-white">Login</button>
 						</Link>
 					</ul>
