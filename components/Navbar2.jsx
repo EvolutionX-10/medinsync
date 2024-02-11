@@ -6,7 +6,7 @@ import { useLoginDetails } from "@/store";
 
 const Navb = ({ isSticky, toggleMenu, isMenuOpen, navItems, username }) => {
 	return (
-		<header className={`w-full ${isSticky ? "sticky top-0 left-0 right-0 bg-white shadow-md rounded-b-lg z-10" : ""}`}>
+		<header className={`w-full ${isSticky ? "sticky top-0 left-0 right-0 bg-[#ececec] shadow-md rounded-b-lg z-10" : ""}`}>
 			<nav className="py-4 lg:px-14 px-4">
 				<div className="flex justify-around items-center text-base">
 					<a href="#" className="text-2xl font-semibold flex items-center space-x-3">

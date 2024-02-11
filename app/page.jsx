@@ -5,6 +5,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { figtree } from "@/app/fonts";
+import Image from "next/image";
 
 export default function Page() {
 	const [showAnimation, setShowAnimation] = useState(true);
@@ -27,27 +28,33 @@ export default function Page() {
 			<Navbar />
 
 			{/* Text1 */}
-			<div className="flex justify-between mt-40 mx-[4rem]">
+			<div className="flex flex-col lg:flex-row items-center gap-20 justify-between mt-40 lg:mx-[4rem] ">
 				<div className="flex flex-col justify-start gap-4">
-						<p className="lg:text-6xl text-xl font-bold text-black">Your</p>
-						<p className="lg:text-6xl text-xl font-bold text-[#273339]">Personalised</p>
-						<p className="lg:text-6xl text-xl font-bold text-black">Medical</p>
-						<p className="lg:text-6xl text-xl font-bold text-[#273339]">Dashboard</p>
-					<div className="flex justify-start">
+						<p className="lg:text-6xl text-4xl lg:text-left text-center font-bold text-black">Your</p>
+						<p className="lg:text-6xl text-4xl lg:text-left text-center font-bold text-[#273339]">Personalised</p>
+						<p className="lg:text-6xl text-4xl lg:text-left text-center font-bold text-black">Medical</p>
+						<p className="lg:text-6xl text-4xl lg:text-left text-center font-bold text-[#273339]">Dashboard</p>
+					<div className="">
 						<Link href="/about">
-							<button className={"rounded-full ml-0 bg-[#0075FF] px-32 py-3 text-white text-2xl " + figtree.className}>
+							<button className={"rounded-full ml-0 bg-[#0075FF] px-20 py-2 text-white text-xl " + figtree.className}>
 								About
 							</button>
 						</Link>
-					</div>
+						</div>
+						<Link href="/about">
+							<button className={" ml-2 px-10 py-3	 bg-[#0075FF] text-white rounded-full text-xl " + figtree.className}>
+								Hospital Login
+							</button>
+						</Link>
+
 				</div>
 
 
-				<div className="flex justify-end">
-					<img src="/illustration.svg" alt="" className="w-[50vw]" />
+				<div className="flex lg:justify-end">
+					<Image src="/illustration.svg" alt="" className="lg:w-[50vw] w-[80vw]" width={100} height={100} />
 				</div>
 			</div>
-			<div className="mt-40"></div>
+			<div className="mt-20"></div>
 			<Footer />
 		</div>
 	);

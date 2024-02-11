@@ -66,8 +66,8 @@ function Page() {
 		<>
 			<Navbar />
 			<div className="bg-[#edf6f5] py-20">
-				<div className="flex flex-col lg:flex-row items-center justify-between lg:items-start ml-4 lg:ml-20 mt-20">
-					<div className="text-center lg:text-left">
+				<div className="flex flex-col lg:flex-row items-center justify-around lg:items-start   mt-10">
+					<div className=" text-center lg:text-left">
 						<p className="text-6xl font-bold">{dayOfWeekString}</p>
 						<p className="text-7xl font-semibold">{date}</p>
 					</div>
@@ -86,11 +86,7 @@ function Page() {
 							</div>
 						</div>
 					</div>
-					<div className="flex justify-center mt-20 lg:mt-0">
-						<div className="w-[90vw] lg:w-[30rem] h-64 rounded-3xl border-[#797885] border-2 mr-10">
-							<p className="text-3xl font-medium text-center mt-3">Prescription</p>
-						</div>
-					</div>
+					
 				</div>
 				<div className="w-[80vw] mt-20 lg:ml-48 ml-10">
 					<div className="flex items-center">

@@ -28,7 +28,7 @@ function Page() {
         <>
             <Navbar />
             <div className="bg-[#edf6f5] py-20">
-                <div className="flex flex-col lg:flex-row items-center justify-between lg:items-start ml-4 lg:ml-20 mt-20">
+                <div className="flex flex-col lg:flex-row items-center justify-between lg:items-start ml-4 lg:ml-20 lg:mt-20 mt-10">
                     <div className="text-center lg:text-left">
                         <p className="text-6xl font-bold">{dayOfWeekString}</p>
                         <p className="text-7xl font-semibold">{date}</p>
