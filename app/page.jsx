@@ -41,9 +41,9 @@ export default function Page() {
 							</button>
 						</Link>
 						</div>
-						<Link href="/about">
+						<Link href="/hospital/register">
 							<button className={" ml-2 px-10 py-3	 bg-[#0075FF] text-white rounded-full text-xl " + figtree.className}>
-								Hospital Login
+								Hospital Signup
 							</button>
 						</Link>
 
