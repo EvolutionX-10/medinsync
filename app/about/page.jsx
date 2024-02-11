@@ -2,7 +2,7 @@
 import React, { useRef, useState, useLayoutEffect, useCallback } from "react";
 import ResizeObserver from "resize-observer-polyfill";
 import { motion, useViewportScroll, useTransform, useSpring } from "framer-motion";
-import Landing1 from "./Landing1";
+import Landing1 from "./landing1";
 import Landing2 from "./landing2";
 import Landing3 from "./landing3";
 import Navbar from "@/components/Navbar";
