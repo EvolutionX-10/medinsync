@@ -5,8 +5,7 @@ import { motion, useViewportScroll, useTransform, useSpring } from "framer-motio
 import Landing1 from "./Landing1";
 import Landing2 from "./landing2";
 import Landing3 from "./landing3";
-import Landing4 from "./landing4";
-import Landing5 from "./landing5";
+import Navbar from "@/components/Navbar";
 
 const SmoothScroll = () => {
   const scrollRef = useRef(null);
@@ -44,6 +43,7 @@ const SmoothScroll = () => {
 
   return (
     <>
+      <Navbar />
       <div className="scroll-container" onScroll={handleScrollDirection}>
         <motion.section
           ref={scrollRef}
@@ -54,7 +54,7 @@ const SmoothScroll = () => {
             <Landing1 />
             <Landing2 />
             <Landing3 />
-            <Landing4 />
+            {/* <Landing4 /> */}
           </div>
         </motion.section>
       </div>

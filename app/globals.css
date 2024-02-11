@@ -51,7 +51,7 @@ html {
 }
 
 body {
-	background-color: white;
+	background-color: #fafafa;
 	overscroll-behavior: none;
 	-ms-overflow-style: none;
 	font-size: 16px;
