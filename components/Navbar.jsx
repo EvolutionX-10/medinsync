@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Navb = ({ isSticky, toggleMenu, isMenuOpen }) => {
 	return (
-		<header className="mx-auto w-1/2 bg-white md-bg-transparent rounded-full fixed top-4 left-0 right-0 z-10 overflow-x-hidden">
+		<header className="mx-auto w-1/2 bg-[#ececec] md-bg-transparent rounded-full fixed top-4 left-0 right-0 z-10 overflow-x-hidden">
 			<nav
 				className={`py-4 lg:px-14 px-4 ${
 					isSticky ? "sticky top-0 left-0 right-0 border-b bg-white shadow-md" : "bg-transparent"

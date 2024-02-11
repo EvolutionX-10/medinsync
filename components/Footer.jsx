@@ -4,8 +4,8 @@ function Footer() {
 			<div className="text-md py-10 text-black flex flex-col lg:flex-row lg:justify-between lg:gap-16 px-4">
 				{/* Main content */}
 				<div className="lg:w-1/2 w-full lg:mr-10">
-					<p className="lg:text-4xl text-2xl lg:ml-6 lg:pl-10">
-						Lorem ipsum, dolor sit amet consectet assumenda sint dolor saniet ea possimus explicabo?
+					<p className="font-bold lg:text-4xl text-2xl lg:ml-6 lg:pl-10">
+						MedInSync provides <span className="text-[#5855ff]">seamless</span> user expericence for <span className="text-[#ffc76d]">patients</span> and <span className="text-[#2ec77a]">healthcare providers.</span>
 					</p>
 				</div>
 				{/* COMPANY and SUPPORT sections */}

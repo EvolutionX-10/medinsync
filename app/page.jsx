@@ -19,7 +19,7 @@ export default function Page() {
 	}, []);
 
 	return (
-		<div className="ml-6 lg:ml-20 mr-6 lg:mr-20">
+		<div className="ml-6 lg mr-6 lg">
 			{/* Conditional rendering of animation */}
 			{showAnimation && <Lottie />}
 
@@ -27,32 +27,27 @@ export default function Page() {
 			<Navbar />
 
 			{/* Text1 */}
-			<div className="flex flex-col items-center justify-center lg:mt-40 gap-4">
-				<p className="lg:text-6xl text-xl font-bold text-black">Your</p>
-				<p className="lg:text-6xl text-xl font-bold text-[#66CDCC]">Personalised</p>
-				<p className="lg:text-6xl text-xl font-bold text-black">Medical</p>
-				<p className="lg:text-6xl text-xl font-bold text-[#0075FF]">Dashboard</p>
-			</div>
+			<div className="flex justify-between mt-40 mx-[4rem]">
+				<div className="flex flex-col justify-start gap-4">
+						<p className="lg:text-6xl text-xl font-bold text-black">Your</p>
+						<p className="lg:text-6xl text-xl font-bold text-[#273339]">Personalised</p>
+						<p className="lg:text-6xl text-xl font-bold text-black">Medical</p>
+						<p className="lg:text-6xl text-xl font-bold text-[#273339]">Dashboard</p>
+					<div className="flex justify-start">
+						<Link href="/about">
+							<button className={"rounded-full ml-0 bg-[#0075FF] px-32 py-3 text-white text-2xl " + figtree.className}>
+								About
+							</button>
+						</Link>
+					</div>
+				</div>
 
-			<div className="flex items-center justify-center mt-10">
-				<Link href="/about">
-					<button
-						className={
-							"rounded-full ml-0 bg-[#0075FF] px-16 py-3 text-white h-[5rem] w-[20rem] text-4xl " + figtree.className
-						}
-					>
-						About
-					</button>
-				</Link>
-			</div>
 
-			<div className="flex items-center justify-center mt-20 mb-20">
-				<a href="#" className="text-2xl font-semibold flex items-center space-x-3">
-					<img src="/logo.svg" alt="" className="w-36 initial-block items-center" />
-				</a>
+				<div className="flex justify-end">
+					<img src="/illustration.svg" alt="" className="w-[50vw]" />
+				</div>
 			</div>
-
-			{/* Footer */}
+			<div className="mt-40"></div>
 			<Footer />
 		</div>
 	);
